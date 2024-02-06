@@ -1,0 +1,48 @@
+
+
+cd $HOME\clouddrive
+
+touch "./ConferenceDailyReset.ps1"
+
+code "./ConferenceDailyReset.ps1"
+
+param([string]$resourceGroup)
+
+$adminCredential = Get-Credential -Message "Enter a username and password for the VM administrator."
+
+For ($i = 1; $i -le 3; $i++) 
+{
+
+}
+
+
+$vmName = "ConferenceDemo" + $i
+Write-Host "Creating VM: " $vmName
+
+
+New-AzVm -ResourceGroupName $resourceGroup -Name $vmName -Credential $adminCredential -Image Canonical:0001-com-ubuntu-server-focal:20_04-lts:latest
+
+
+
+
+
+param([string]$resourceGroup)
+
+$adminCredential = Get-Credential -Message "Enter a username and password for the VM administrator."
+
+For ($i = 1; $i -le 3; $i++)
+{
+    $vmName = "ConferenceDemo" + $i
+    Write-Host "Creating VM: " $vmName
+    New-AzVm -ResourceGroupName $resourceGroup -Name $vmName -Credential $adminCredential -Image Canonical:0001-com-ubuntu-server-focal:20_04-lts:latest
+}
+
+
+
+./ConferenceDailyReset.ps1 learn-100ccbc6-3cb8-498a-a63c-a8c924cdd31a
+
+
+
+
+Get-AzResource -ResourceType Microsoft.Compute/virtualMachines
+
